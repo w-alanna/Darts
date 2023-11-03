@@ -4,4 +4,4 @@
 
 
 # Number of darts to throw; the more we throw, the more accurate our estimate
-darts <- 1000
+darts <- 20
