@@ -1,5 +1,5 @@
 # Monte Carlo darts simulation to compute PI
-# Alanna Hart, November 2023
+# Alanna Hart, Melat Ghebreselassie, November 2023
 
 
 
