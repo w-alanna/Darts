@@ -3,7 +3,7 @@
 
 # Number of darts to throw; the more we throw, the more accurate our estimate
 
-dart_num <- 1000
+dart_num <- 1000000000
 radius <- 0.5
 
 
@@ -27,6 +27,13 @@ points$incircle <- within_radius(
   radius)
 
 
-library(ggplot2)
-dart_plot <- ggplot(points, aes(x, y, color=incircle))+geom_point()
-print(dart_plot)
+#library(ggplot2)
+#dart_plot <- ggplot(points, aes(x, y, color=incircle))+geom_point()
+#print(dart_plot)
+
+#compute PI
+a_square <- 4*radius^2
+a_circle <- a_square * sum(points$incircle) / dart_num
+PI_est <- a_circle / radius^2
+
+print(PI_est)
