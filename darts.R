@@ -6,9 +6,29 @@
 dart_num <- 1000
 radius <- 0.5
 
+
 points <- data.frame(x = rep(NA, dart_num), y = rep(NA, dart_num))
 
 for(i in 1:dart_num) {
   points$x[i] <- runif(1, min=0, max=(2*radius))
   points$y[i] <- runif(1, min=0, max=(2*radius))
 }
+
+#Computing whether darts are within a given radius
+within_radius <-function(x, y, centerx, centery, radius) {
+  distance <- sqrt((x-centerx)^2+(y-centery)^2)
+  return (distance <=radius)
+}
+
+points$incircle <- NA
+for(i in 1:dart_num) {
+  points$incircle[i] <- within_radius(
+    points$x[i], 
+    points$y[i], 
+    centerx=0.5,
+    centery=0.5, 
+    radius)
+}
+
+library(ggplot2)
+ggplot(points, aes(x, y, color=incircle))+geom_point()
